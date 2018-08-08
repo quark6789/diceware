@@ -31,9 +31,10 @@ while True:
     try:
         user_input = input("What are the " + str(wordlists[selected_list][2]) +
                " dice numbers? Type 'auto' to auto-generate or 'exit' to exit. ")
-        if user_input.lower() == "exit":
+        user_input = user_input.lower()
+        if user_input == "exit":
             break
-        if (user_input.lower() == "auto"):
+        if (user_input == "auto"):
             word_num = auto_gen(wordlists[selected_list][2])
         else:
             word_num = int(user_input)
@@ -43,8 +44,8 @@ while True:
 
         print()
         print(password)
-        print("Length: ", num_words, "\tEntropy: ",
-                (num_words * wordlists[selected_list][3]), " bits")
+        print("Length:", num_words, "words,", len(password), "characters",
+                "\nEntropy:", (num_words * wordlists[selected_list][3]), "bits")
 
     except (KeyError, ValueError):
         print("That was not a valid number. Please try again.")
